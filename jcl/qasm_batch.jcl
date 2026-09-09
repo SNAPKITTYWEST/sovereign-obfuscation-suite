@@ -1,0 +1,20 @@
+//QASMJOB JOB (SOV,2026),'QUANTUM-RAG-DISPATCH',CLASS=A,MSGCLASS=X,
+// NOTIFY=&SYSUID,TIME=1440
+//*-------------------------------------------------------------------*
+//* INGEST OPENQASM CIRCUIT INTO IBM MAINFRAME Z/OS BATCH PIPELINE *
+//*-------------------------------------------------------------------*
+//STEP01 EXEC PGM=IKJEFT01,REGION=0M,DYNAMNBR=250
+//SYSTSPRT DD SYSOUT=*
+//QASMIN DD DSN=SOVEREIGN.CIRCUITS.QASM(MIXCOL),DISP=SHR
+//GHOSTOUT DD DSN=SOVEREIGN.GHOST.MIRROR.DATA,
+// DISP=(NEW,CATLG,DELETE),
+// UNIT=SYSDA,SPACE=(CYL,(100,50),RLSE),
+// DCB=(RECFM=VB,LRECL=4096,BLKSIZE=0)
+//SYSTSIN DD *
+  BPXBATCH SH +
+    python3 /u/sovereign/bin/blackhole_qasm_bridge.py \
+      --dataset=SOVEREIGN.CIRCUITS.QASM(MIXCOL) \
+      --output=SOVEREIGN.GHOST.MIRROR.DATA \
+      --theta=0.036154345
+/*
+//

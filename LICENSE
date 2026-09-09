@@ -1,0 +1,21 @@
+TRILICENSE — Sovereign Obfuscation Suite
+
+Copyright (c) 2026 SNAPKITTYWEST
+
+This software is free software; you may redistribute it and/or modify it
+under the terms of ANY ONE of the following three licenses, at your choice:
+
+  1. GNU General Public License, version 2.0 (GPL-2.0-only)
+     See LICENSE-GPL2 for the full text.
+
+  2. GNU General Public License, version 3.0 (GPL-3.0-only)
+     See LICENSE-GPL3 for the full text.
+
+  3. GNU Affero General Public License, version 3.0 (AGPL-3.0-only)
+     See LICENSE-AGPL3 for the full text.
+
+You do NOT need to comply with all three; choose the one that fits your
+use case. If you redistribute this software or a derivative work, you must
+include this notice and the full text of the license you selected.
+
+SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR AGPL-3.0-only

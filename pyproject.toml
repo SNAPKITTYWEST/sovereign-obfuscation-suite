@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sovereign-obfuscation-suite"
+version = "1.0.0"
+description = "Quantum-inspired cryptographic obfuscation suite with multi-language support"
+requires-python = ">=3.11"
+license = {text = "GPL-2.0-only OR GPL-3.0-only OR AGPL-3.0-only"}
+dependencies = [
+    "cryptography>=42.0",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["python*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
