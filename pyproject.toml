@@ -21,8 +21,8 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["python*"]
+include = ["python*", "pipeline*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "pipeline/tests"]
 python_files = "test_*.py"

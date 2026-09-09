@@ -1,13 +1,15 @@
 # Sovereign Obfuscation Suite
 
-[![Tests](https://img.shields.io/badge/tests-14%2F14-brightgreen)](tests/)
+[![Tests](https://img.shields.io/badge/tests-30%2F30-brightgreen)](tests/)
 [![Python](https://img.shields.io/badge/python-%E2%89%A53.11-3776AB?logo=python&logoColor=white)](https://python.org)
+[![Pipeline](https://img.shields.io/badge/pipeline-20--stage-FF6B35)](pipeline/)
 [![Q#](https://img.shields.io/badge/Q%23-quantum-512BD4?logo=dotnet&logoColor=white)](qsharp/)
 [![OpenQASM](https://img.shields.io/badge/OpenQASM-3.0-6929C4)](openqasm/)
 [![JCL](https://img.shields.io/badge/JCL-z%2FOS-E8E8E8)](jcl/)
 [![MUMPS](https://img.shields.io/badge/MUMPS-M-444444)](mumps/)
 [![Elixir](https://img.shields.io/badge/elixir-plumbline-4B275F?logo=elixir&logoColor=white)](elixir/)
 [![MATLAB](https://img.shields.io/badge/MATLAB-manifold-E16737)](matlab/)
+[![Agda](https://img.shields.io/badge/Agda-formal-315665)](pipeline/agda/)
 [![License](https://img.shields.io/badge/license-GPL--2.0%20%7C%20GPL--3.0%20%7C%20AGPL--3.0-blue)](#license)
 [![Copyleft](https://img.shields.io/badge/copyleft-%E2%86%BA-red)](LICENSE)
 
@@ -42,6 +44,13 @@ MATLAB ─────── Holographic Riemannian manifold binding
 ```bash
 pip install -e ".[dev]"
 pytest
+```
+
+### Run the 20-stage formal verification pipeline
+
+```bash
+python -m pipeline.run
+python -m pipeline.run --with-activations
 ```
 
 ```python
@@ -90,28 +99,41 @@ sovereign-obfuscation-suite/
 │   ├── rag_mix_column.py      # AES GF(2^8) + RAG phase modulation
 │   ├── spiral_stripper.py     # Golden ratio permutation + Fibonacci filter
 │   └── sparse_rbg.py          # Polynomial dispatch over sparse tensor
+├── pipeline/                  # 20-stage formal verification pipeline
+│   ├── core/                  # Types, pipeline orchestrator
+│   │   ├── types.py           # Node, State, Operation, BinaryObject, Invariants
+│   │   └── pipeline.py        # Pipeline runner with provenance classification
+│   ├── stages/                # All 20 stages
+│   │   ├── stage_01_observable.py
+│   │   ├── stage_02_latent.py
+│   │   ├── ...
+│   │   └── stage_20_orchestrator.py
+│   ├── agda/                  # Formal verification types
+│   │   ├── SovereignPipeline.agda
+│   │   ├── Stages1-5.agda
+│   │   ├── Stages6-10.agda
+│   │   ├── Stages11-15.agda
+│   │   └── Stages16-20.agda
+│   ├── run.py                 # CLI pipeline runner
+│   └── tests/                 # 16 pipeline tests
 ├── qsharp/
-│   └── NighthawkWormhole.qs   # Q# wormhole teleportation circuit
+│   └── NighthawkWormhole.qs
 ├── openqasm/
 │   ├── mixcolumn_entanglement.qasm
 │   └── sparse_rbg_glue.qasm
 ├── jcl/
-│   ├── qasm_batch.jcl         # z/OS QASM ingestion
-│   ├── tensor_prune.jcl       # Logarithmic spiral pruning
-│   ├── spiral_prune.jcl       # RBG library reduction
-│   └── sparse_rbg_qasm.jcl    # Sparse RBG coprocessor dispatch
+│   ├── qasm_batch.jcl
+│   ├── tensor_prune.jcl
+│   ├── spiral_prune.jcl
+│   └── sparse_rbg_qasm.jcl
 ├── mumps/
-│   └── singularity.m          # Blackhole ledger ingestion
+│   └── singularity.m
 ├── elixir/lib/sovereign/
-│   └── synthetic_plumbline.ex # Recursive z-axis tensor descent
+│   └── synthetic_plumbline.ex
 ├── matlab/
-│   └── SovereignSystem.m      # Holographic Riemannian manifold
+│   └── SovereignSystem.m
 ├── tests/
-│   └── test_sovereign.py      # 14 tests
-├── LICENSE                    # Trilicense header
-├── LICENSE-GPL2               # GPL-2.0
-├── LICENSE-GPL3               # GPL-3.0
-├── LICENSE-AGPL3              # AGPL-3.0
+│   └── test_sovereign.py      # 14 obfuscation tests
 └── pyproject.toml
 ```
 
